@@ -38,7 +38,16 @@ console.log("Green Crystal", greenCrystal);
 // Your game will hide this amount until the player clicks a crystal.
 // When they do click one, update the player's score counter.
 
+//Declaring variable for tallying scores
+$('#numberwins').text(wins);
+$('#numberlosses').text(losses);
 
 //Click functions
+$(document).ready(function() {
 
-
+$('#three').on ('click', function(){
+    currentScore = currentScore + redCrystal;
+    console.log("New total score= " + currentScore);
+    $('#finalTotal').text(totalScore);
+}
+})
