@@ -56,22 +56,24 @@ function newGame() {
 }
 
 //Win the game - alert You win and
-
 function winner(){
     alert("You win!");
     $("#winOrLose").text("You win!");
     wins++;
     $("#wins").text(wins);
+    newGame();
 }
 
 //Lose the game - alert You lose - Try Again
-
 function loser(){
     alert("You Lose - Try Again");
     $("#winOrLose").text(losses);
     losses++;
     $("#losses").text(losses);
+    newGame();
 }
+
+//Reset the game
 
 newGame();
 
@@ -79,10 +81,11 @@ function crystalClick () {
     totalScore += parseInt($(this).attr("data-crystalvalue"));
     $("#totalScore").html(totalScore);
     if (totalScore == randomNumber) {
-        wins++;
+        winner();
+        
     }
     else if (totalScore > randomNumber) {
-        losses++;
+        loser();
     };
 
 };
