@@ -34,8 +34,13 @@ console.log("Green Crystal", greenCrystal);
 
 //Click functions
 
+
+
 //Game functions
+
 //New Game
+$(document).ready(function() {
+
 function newGame() {
     totalScore = 0;
     $("#randomNumber").text(randomNumber);
@@ -53,6 +58,7 @@ function newGame() {
 //Win the game - alert You win and
 
 function winner(){
+    alert("You win!");
     $("#winOrLose").text("You win!");
     wins++;
     $("#wins").text(wins);
@@ -61,6 +67,7 @@ function winner(){
 //Lose the game - alert You lose - Try Again
 
 function loser(){
+    alert("You Lose - Try Again");
     $("#winOrLose").text(losses);
     losses++;
     $("#losses").text(losses);
@@ -68,18 +75,33 @@ function loser(){
 
 newGame();
 
-$(".crystalimg").on("click"), function (){
-    if (totalScore >= randomNumber){
-        return;
+function crystalClick () {
+    totalScore += parseInt($(this).attr("data-crystalvalue"));
+    $("#totalScore").html(totalScore);
+    if (totalScore == randomNumber) {
+        wins++;
     }
-    var crystalValue = $(this).attr("data-crystalvalue");
-    crystalValue = parseInt(crystalValue);
-    totalScore += crystalValue;
-    $("#totalScore").text(totalScore);
+    else if (totalScore > randomNumber) {
+        losses++;
+    };
 
-    if (totalScore === randomNumber) {
-        winner();
-    } else if (totalScore > randomNumber) {
-        loser();
-    }
-}
+};
+
+$(document).on("click", ".crystalimg", crystalClick);
+
+// $(".crystalimg").on("click"), function (){
+//     if (totalScore >= randomNumber){
+//         return;
+//     }
+//     var crystalValue = $(this).attr("data-crystalvalue");
+//     crystalValue = parseInt(crystalValue);
+//     totalScore += crystalValue;
+//     $("#totalScore").text(totalScore);
+
+//     if (totalScore === randomNumber) {
+//         winner();
+//     } else if (totalScore > randomNumber) {
+//         loser();
+//     }
+// }
+});
