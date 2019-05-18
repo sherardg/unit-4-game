@@ -21,39 +21,41 @@
                         <li id="yellow">Yellow</li>
                     </ul>
                     <li>By clicking on a crystal, you will add a specific amount of points to your total score.</li>
-                    <li>You win the game by matching your total score to the random number.</li>
-                    <li>You lose the game if your total score goes above the random number.</li>
+                    <li>You win the game by matching your total score to the "Number To Get".</li>
+                    <li>You lose the game if your total score goes above the "Number To Get".</li>
                     <li>The value of each crystal is hidden from you until you click on it.</li>
                     <li>Each time when the game starts, the game will change the values of each crystal.</li>
                 </ol>
             </div>
-            <div class="numberToMatch">
+            <div class="numberToGet">
                 <h2>Number To Get:
-                    <span id= "randomNumber"></span>
+                    <span id="randomNumber"></span>
                 </h2>
             </div>
             <div class="winsAndLosses">
                 <h2>Wins:
-                    <span id= "numberWins"></span>
+                    <span id="wins"></span>
                     </br>
                     Losses: 
-                    <span id= "numberLosses"></span>
+                    <span id="losses"></span>
                 </h2>
         </div>
 
         <div class="gems">
-                <img src="assets/images/blueCrystal.png" class=gemImage id="one" alt="Blue Gem">
-                <img src="assets/images/greenCrystal.png" class=gemImage id="two" alt="Green Gem">
-                <img src="assets/images/redCrystal.png" class=gemImage id= "three" alt="Red Gem">
-                <img src="assets/images/yellowCrystal.png" class=gemImage id= "four" alt="Yellow Gem">
+                <img src="assets/images/blueCrystal.png" class=crystalimg id="blueCrystal" alt="Blue Gem">
+                <img src="assets/images/greenCrystal.png" class=crystalimgid="greenCrystal" alt="Green Gem">
+                <img src="assets/images/redCrystal.png" class=crystalimg id= "redCrystal" alt="Red Gem">
+                <img src="assets/images/yellowCrystal.png" class=crystalimg id= "yellowCrystal" alt="Yellow Gem">
             </div>
             <div class="userTotal">
                 <h2>Your total score is:
-                    <span id="finalTotal"></span>
+                    <span id="totalScore"></span>
                 </h2>
         </div>
 
+       
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <script src="assets/javascript/game.js"></script>
+    <script lang="javascript" src="assets/javascript/game.js"></script>
 </body>
 </html>

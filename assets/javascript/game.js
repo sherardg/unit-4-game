@@ -1,15 +1,15 @@
+   
 //Global variables
 var randomNumber = null;
 var wins = 0;
 var losses = 0;
+var totalScore = 0;
+
 var redCrystal = 0;
 var blueCrystal = 0;
 var yellowCrystal = 0;
 var greenCrystal = 0;
-var totalScore = 0;
-var currentScore = 0;
 
-//Functions
 
 //Generate random number with maximun and minimum values)
 getRandomInt = function (max, min) {
@@ -32,22 +32,54 @@ console.log("Yellow Crystal", yellowCrystal);
 greenCrystal = getRandomInt (12, 1);
 console.log("Green Crystal", greenCrystal);
 
-//Game Instructions
-// When the player clicks on a crystal, it will add a specific amount of points to the player's total score. 
-
-// Your game will hide this amount until the player clicks a crystal.
-// When they do click one, update the player's score counter.
-
-//Declaring variable for tallying scores
-$('#numberwins').text(wins);
-$('#numberlosses').text(losses);
-
 //Click functions
-$(document).ready(function() {
 
-$('#three').on ('click', function(){
-    currentScore = currentScore + redCrystal;
-    console.log("New total score= " + currentScore);
-    $('#finalTotal').text(totalScore);
+//Game functions
+//New Game
+function newGame() {
+    totalScore = 0;
+    $("#randomNumber").text(randomNumber);
+    $("#totalScore").text(totalScore);
+    $("#redCrystal").attr("data-crystalvalue", redCrystal);
+    $("#blueCrystal").attr("data-crystalvalue", blueCrystal);
+    $("#yellowCrystal").attr("data-crystalvalue", yellowCrystal);
+    $("#greenCrystal").attr("data-crystalvalue", greenCrystal);
+    $("#wins").text(wins);
+    $("#losses").text(losses);
+    console.log(redCrystal, blueCrystal, yellowCrystal, greenCrystal);
+
 }
-})
+
+//Win the game - alert You win and
+
+function winner(){
+    $("#winOrLose").text("You win!");
+    wins++;
+    $("#wins").text(wins);
+}
+
+//Lose the game - alert You lose - Try Again
+
+function loser(){
+    $("#winOrLose").text(losses);
+    losses++;
+    $("#losses").text(losses);
+}
+
+newGame();
+
+$(".crystalimg").on("click"), function (){
+    if (totalScore >= randomNumber){
+        return;
+    }
+    var crystalValue = $(this).attr("data-crystalvalue");
+    crystalValue = parseInt(crystalValue);
+    totalScore += crystalValue;
+    $("#totalScore").text(totalScore);
+
+    if (totalScore === randomNumber) {
+        winner();
+    } else if (totalScore > randomNumber) {
+        loser();
+    }
+}
