@@ -1,4 +1,4 @@
-   
+$(document).ready(function() {   
 //Global variables
 var randomNumber = null;
 var wins = 0;
@@ -9,7 +9,6 @@ var redCrystal = 0;
 var blueCrystal = 0;
 var yellowCrystal = 0;
 var greenCrystal = 0;
-
 
 //Generate random number with maximun and minimum values)
 getRandomInt = function (max, min) {
@@ -32,14 +31,9 @@ console.log("Yellow Crystal", yellowCrystal);
 greenCrystal = getRandomInt (12, 1);
 console.log("Green Crystal", greenCrystal);
 
-//Click functions
-
-
-
 //Game functions
 
 //New Game
-$(document).ready(function() {
 
 function newGame() {
     totalScore = 0;
@@ -64,24 +58,45 @@ function winner(){
     resetGame();
 }
 
+
 //Lose the game - alert You lose - Try Again
 function loser(){
     alert("You Lose - Try Again");
-    $("#winOrLose").text(losses);
+    $("#winOrLose").text("You lose!");
     losses++;
     $("#losses").text(losses);
     resetGame();
 }
+
 
 //Reset the game
 function resetGame() {
     $("#randomNumber").html(randomNumber);
     $("#winOrLose").html("<h2>Wins: " + wins + "</h2>" + "<h2>Losses: " + losses +"</h2>");
     $("#totalScore").html(totalScore);
+    //Generate random number with maximun and minimum values - getting back to original state)
+    getRandomInt = function (max, min) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+      
+    randomNumber = getRandomInt(120, 19);
+    console.log(randomNumber);
+    
+    //Generate random number for the Crystals
+    redCrystal = getRandomInt (12, 1);
+    console.log("Red Crystal", redCrystal);
+    
+    blueCrystal = getRandomInt (12, 1);
+    console.log("Blue Crystal", blueCrystal);
+    
+    yellowCrystal = getRandomInt (12, 1);
+    console.log("Yellow Crystal", yellowCrystal);
+    
+    greenCrystal = getRandomInt (12, 1);
+    console.log("Green Crystal", greenCrystal);
     newGame();
 }
 
-newGame();
 
 function crystalClick () {
     totalScore += parseInt($(this).attr("data-crystalvalue"));
@@ -95,22 +110,8 @@ function crystalClick () {
     };
 
 };
+newGame();
 
 $(document).on("click", ".crystalimg", crystalClick);
 
-// $(".crystalimg").on("click"), function (){
-//     if (totalScore >= randomNumber){
-//         return;
-//     }
-//     var crystalValue = $(this).attr("data-crystalvalue");
-//     crystalValue = parseInt(crystalValue);
-//     totalScore += crystalValue;
-//     $("#totalScore").text(totalScore);
-
-//     if (totalScore === randomNumber) {
-//         winner();
-//     } else if (totalScore > randomNumber) {
-//         loser();
-//     }
-// }
 });
